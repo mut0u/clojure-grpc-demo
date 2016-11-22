@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+
+package michael;
+
+message Empty {}
+
+
+message HelloRequest {
+  string str       =1;
+}
+
+
+
+message M1 {
+  string s       =1;
+  int64  i       =3;
+}
+
+message M2 {
+  string s       =1;
+  int64  i       =3;
+}
+
+
+
+enum Bar {
+  BAR_A = 0;
+  BAR_B = 5;
+  BAR_C = 1234;
+}
+
+
+message DemoMessage {
+  enum Foo {
+    VALUE_A = 0;
+    VALUE_B = 5;
+    VALUE_C = 1234;
+  }
+
+  string str       =1;
+  int32  index     =2;
+  Foo foo          =3;
+  Bar bar          =4;
+  M2  m2           =5;
+  repeated M1 m_list =6;
+}
+
+
+message HelloReply {
+  string reply     =1;
+}
+
+
+service DemoService {
+
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}

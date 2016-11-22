@@ -1,0 +1,20 @@
+{
+  "name": "grpc-node",
+  "version": "1.0.0",
+  "description": "grpc-node",
+  "main": "index.js",
+  "author": "savior",
+  "license": "MIT",
+  "dependencies": {
+    "grpc": "^1.0.1-pre1",
+    "koa": "2.0.0",
+    "koa-router": "next"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "bignumber.js": "^2.3.0",
+    "fast-async": "^6.0.20",
+    "nodemon": "^1.9.1"
+  }
+}

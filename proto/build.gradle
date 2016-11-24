@@ -38,7 +38,7 @@ group = 'michael'
 version = '0.1.0-SNAPSHOT'
 
 jar {
-    baseName = 'michael-proto'
+    baseName = 'michael-demo-proto'
 }
 
 

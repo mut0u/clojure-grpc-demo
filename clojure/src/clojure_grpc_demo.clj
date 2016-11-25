@@ -1,5 +1,5 @@
 (ns clojure-grpc-demo
-  (:require [grpc.transformer :refer [->message]])
+  (:require [grpc.transformer :refer [->message <-message]])
   (:import [io.grpc Server ServerBuilder]
            [michael DemoServiceGrpc DemoServiceGrpc$DemoServiceImplBase]
            [michael Demo$HelloReply Demo$DemoMessage]
@@ -8,17 +8,14 @@
   )
 
 
-(defn <-message []
-  )
-
 
 
 (defmacro defrpc [name interfaces]
   `(do
-     (defmacro ~(symbol (str "defn-" name)) [pname# [request# response#] ~'& body#]
+     (defmacro ~(symbol (str "defn-" name)) [pname# params# ~'& body#]
        (let [mname# ~(str name)]
          `(let []
-            (update-proxy ~(symbol mname#) {~(str pname#) (fn [~request# ~response#]
+            (update-proxy ~(symbol mname#) {~(str pname#) (fn [~'~'this ~@params#]
                                                             ~@body#)})
             )))
      (def ~name
@@ -27,26 +24,22 @@
 (defrpc demorpc [DemoServiceGrpc$DemoServiceImplBase])
 
 
-(defn-demorpc sayHello [request response]
-  (prn (<-message request))
+(defn-demorpc sayHello [r p]
+  (prn (<-message r))
   (prn "hello word")
   (let [m (->message {:reply "hi savior"}  Demo$HelloReply )]
-    (.onNext response m)
-    (.onCompleted response)))
-
+    (.onNext p m)
+    (.onCompleted p)))
 
 
 
 (defn start []
-  (let [impl demorpc
-        server (->(ServerBuilder/forPort 9999)
-                  (.addService impl)
+  (let [server (->(ServerBuilder/forPort 9999)
+                  (.addService demorpc)
                   (.build)
                   (.start)
                   (.awaitTermination))]
     server))
-
-
 
 
 (defn -main [& args]

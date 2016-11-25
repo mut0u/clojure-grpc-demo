@@ -16,26 +16,28 @@ It demonstrate how to use clojure as grpc server.
 
 1. clone demo
 
+```
    git clone git@github.com:mut0u/clojure-grpc-demo.git
-
+```
 
 2. build proto file
-
+```
     cd proto
     gradle
-
+```
 
 
 3. link proto
 
-
+```
     cd clojure
     ln -s ../proto/build
-
+```
+```
 
     cd node
     ln -s ../proto
-
+```
 
 
 4. npm install

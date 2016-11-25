@@ -7,27 +7,22 @@ It demonstrate how to use clojure as grpc server.
 
 ## Installation
 
-
-0. download dependence:
-
+1. download dependence:
+```
    git clone git@github.com:mut0u/grpc.transformer.git
    cd grpc.transformer
    lein install
-
-1. clone demo
-
+```
+2. clone demo
 ```
    git clone git@github.com:mut0u/clojure-grpc-demo.git
 ```
-
-2. build proto file
+3. build proto file
 ```
     cd proto
     gradle
 ```
-
-
-3. link proto
+4. link proto
 
 ```
     cd clojure
@@ -38,9 +33,7 @@ It demonstrate how to use clojure as grpc server.
     cd node
     ln -s ../proto
 ```
-
-
-4. npm install
+5. npm install
 
 
 ## Usage

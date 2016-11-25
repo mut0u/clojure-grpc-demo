@@ -1,32 +1,62 @@
-# clojure.grpc
+# clojure-grpc-demo
 
-FIXME: description
+这个是使用clojure配合node实现的rpc 通信的demo.
+
+
 
 ## Installation
+需要有一些准备工作：
+0. git clone git@github.com:mut0u/grpc.transformer.git && lein install
+1. git clone git@github.com:mut0u/clojure-grpc-demo.git
 
-Download from http://example.com/FIXME.
+
+2. build proto
+```
+cd proto
+gradle
+```
+
+
+3. link proto
+
+```
+cd clojure
+ln -s ../proto/build
+
+```
+
+```
+cd node
+ln -s ../proto/
+```
+
+
+4. npm install
+
 
 ## Usage
 
-FIXME: explanation
+    cd clojure
+    lein run
 
-    $ java -jar clojure.grpc-0.1.0-standalone.jar [args]
+    cd node
+    babel-node index.js
+
+
+    curl http://localhost:3000
+
+
 
 ## Options
 
-FIXME: listing of options this app accepts.
+
 
 ## Examples
 
 ...
 
-### Bugs
 
-...
 
-### Any Other Sections
-### That You Think
-### Might be Useful
 
 ## License
 

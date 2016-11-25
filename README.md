@@ -1,34 +1,41 @@
 # clojure-grpc-demo
+This is the grpc demo which Clojure as server and Node as client.
 
-这个是使用clojure配合node实现的rpc 通信的demo.
+It demonstrate how to use clojure as grpc server.
 
 
 
 ## Installation
-需要有一些准备工作：
-0. git clone git@github.com:mut0u/grpc.transformer.git && lein install
-1. git clone git@github.com:mut0u/clojure-grpc-demo.git
 
 
-2. build proto
-```
-cd proto
-gradle
-```
+0. download dependence:
+
+   git clone git@github.com:mut0u/grpc.transformer.git
+   cd grpc.transformer
+   lein install
+
+1. clone demo
+
+   git clone git@github.com:mut0u/clojure-grpc-demo.git
+
+
+2. build proto file
+
+    cd proto
+    gradle
+
 
 
 3. link proto
 
-```
-cd clojure
-ln -s ../proto/build
 
-```
+    cd clojure
+    ln -s ../proto/build
 
-```
-cd node
-ln -s ../proto/
-```
+
+    cd node
+    ln -s ../proto
+
 
 
 4. npm install
@@ -44,17 +51,6 @@ ln -s ../proto/
 
 
     curl http://localhost:3000
-
-
-
-## Options
-
-
-
-## Examples
-
-...
-
 
 
 

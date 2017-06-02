@@ -1,5 +1,6 @@
 (ns clojure-grpc-demo
-  (:require [grpc.transformer :refer [->message <-message]])
+  (:require [grpc.transformer :refer [->message <-message]]
+            [grpc.server :refer [defrpc]])
   (:import [io.grpc Server ServerBuilder]
            [michael DemoServiceGrpc DemoServiceGrpc$DemoServiceImplBase]
            [michael Demo$HelloReply Demo$DemoMessage]
@@ -9,27 +10,15 @@
 
 
 
-
-(defmacro defrpc [name interfaces]
-  `(do
-     (defmacro ~(symbol (str "defn-" name)) [pname# params# ~'& body#]
-       (let [mname# ~(str name)]
-         `(let []
-            (update-proxy ~(symbol mname#) {~(str pname#) (fn [~'~'this ~@params#]
-                                                            ~@body#)})
-            )))
-     (def ~name
-       (proxy [~@interfaces] []))))
-
 (defrpc demorpc [DemoServiceGrpc$DemoServiceImplBase])
 
+(defn build-response [msg clz response]
+  (some->> (->message msg clz)
+           (.onNext response)))
 
 (defn-demorpc sayHello [r p]
-  (prn (<-message r))
-  (prn "hello word")
-  (let [m (->message {:reply "hi savior"}  Demo$HelloReply )]
-    (.onNext p m)
-    (.onCompleted p)))
+  (prn "the message " r)
+  (build-response {:reply "hi savior"}  Demo$HelloReply  p))
 
 
 

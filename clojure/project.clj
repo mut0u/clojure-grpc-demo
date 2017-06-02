@@ -9,7 +9,8 @@
                  [io.netty/netty-codec-http2 "4.1.3.Final" :exclusions [io.grpc/grpc-core]]
                  [io.grpc/grpc-protobuf "1.0.1"]
                  [io.grpc/grpc-stub "1.0.1"]
-                 [grpc.transformer "0.1.0-SNAPSHOT"]]
+                 [grpc.transformer "0.1.0-SNAPSHOT"]
+                 [grpc.server "0.1.0-SNAPSHOT"]]
   :main ^:skip-aot clojure-grpc-demo
   :target-path "target/%s"
   :java-source-paths ["build/generated/source/proto/main/grpc"

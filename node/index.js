@@ -32,6 +32,7 @@ var promisify = function promisify(fn, receiver) {
 
 
 router.get('/', async(ctx, next) => {
+  console.log("aaaa", "aa")
   let data = await  promisify( client.sayHello, client)({str: "hello"});
   ctx.body = data;
 });

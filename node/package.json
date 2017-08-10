@@ -6,7 +6,7 @@
   "author": "savior",
   "license": "MIT",
   "dependencies": {
-    "grpc": "^1.0.1-pre1",
+    "grpc": "^1.4.1",
     "koa": "2.0.0",
     "koa-router": "next",
     "promise": "^7.1.1"

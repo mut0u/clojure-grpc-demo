@@ -20,8 +20,6 @@
   (prn "the message " r)
   (build-response {:reply "hi savior"}  Demo$HelloReply  p))
 
-
-
 (defn start []
   (let [server (->(ServerBuilder/forPort 9999)
                   (.addService demorpc)
